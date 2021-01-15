@@ -1,3 +1,5 @@
+package enviroment;
+
 public class ThrottleBody implements Sensor {
 
     private int throttlePosition;

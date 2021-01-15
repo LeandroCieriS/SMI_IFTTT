@@ -1,3 +1,5 @@
+package enviroment;
+
 public class GyroscopeY implements Sensor{
 
     private int inclinationYAxis;

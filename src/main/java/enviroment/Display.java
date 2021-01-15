@@ -1,3 +1,5 @@
+package enviroment;
+
 public class Display implements Actuator {
 
     public void showInclinationAngle(int degrees){

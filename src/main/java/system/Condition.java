@@ -1,3 +1,7 @@
+package system;
+
+import enviroment.Sensor;
+
 public class Condition {
 
     private final String name;
