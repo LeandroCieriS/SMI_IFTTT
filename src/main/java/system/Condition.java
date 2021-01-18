@@ -2,20 +2,24 @@ package system;
 
 import enviroment.Sensor;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Condition {
 
     private final String name;
     private final String desc;
     private final int threshold;
     private final RelationalOperator relationalOperator;
-
     private Sensor sensor;
 
-    public Condition(String name, String desc, RelationalOperator relationalOperatorToBeTrue, int threshold) {
+    public Condition(String name, String desc, RelationalOperator relationalOperatorToBeTrue, int threshold, Sensor sensor) {
         this.name = name;
         this.desc = desc;
         relationalOperator = relationalOperatorToBeTrue;
         this.threshold = threshold;
+        this.sensor = sensor;
     }
 
     public void setSensor(Sensor sensor) {

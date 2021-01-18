@@ -29,4 +29,17 @@ public class Rule {
             act.execute();
         }
     }
+
+    public void addCondition(Condition condition){
+        conditions.add(condition);
+    }
+
+    public void addAction(Action action){
+        actions.add(action);
+    }
+
+    public void execute(){
+        if (allConditionsAreMet())
+            triggerActions();
+    }
 }
