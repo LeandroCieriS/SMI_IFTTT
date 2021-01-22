@@ -8,4 +8,8 @@ public class Display implements Actuator {
     public void execute(int degrees) {
         this.degrees = degrees;
     }
+
+    public int getDegrees() {
+        return degrees;
+    }
 }
