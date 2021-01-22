@@ -1,6 +1,7 @@
 package system;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Account {
@@ -16,5 +17,13 @@ public class Account {
         this.userName = userName;
         this.password = password;
         this.email = email;
+    }
+
+    public List<Rule> getRules() {
+        return rules;
+    }
+
+    public void setRules(Rule... rules) {
+        Collections.addAll(this.rules, rules);
     }
 }

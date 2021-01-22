@@ -1,6 +1,7 @@
 package system;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Rule {
@@ -28,5 +29,21 @@ public class Rule {
         for (Action act : actions) {
             act.execute();
         }
+    }
+
+    public List<Condition> getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(Condition... conditions) {
+        Collections.addAll(this.conditions, conditions);
+    }
+
+    public List<Action> getActions() {
+        return actions;
+    }
+
+    public void setActions(Action... actions) {
+        Collections.addAll(this.actions, actions);
     }
 }

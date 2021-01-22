@@ -11,14 +11,11 @@ public class Condition {
 
     private Sensor sensor;
 
-    public Condition(String name, String desc, RelationalOperator relationalOperatorToBeTrue, int threshold) {
+    public Condition(String name, String desc, RelationalOperator relationalOperatorToBeTrue, int threshold, Sensor sensor) {
         this.name = name;
         this.desc = desc;
         relationalOperator = relationalOperatorToBeTrue;
         this.threshold = threshold;
-    }
-
-    public void setSensor(Sensor sensor) {
         this.sensor = sensor;
     }
 

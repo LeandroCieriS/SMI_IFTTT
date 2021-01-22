@@ -22,12 +22,11 @@ public class ConditionTest {
         doReturn(2100).when(tachometer2).getValue();
 
         //Initialize condition and join mock sensor
-        Condition condition = new Condition("Engine is idling","RPMs are below and 1750", RelationalOperator.LESS_THAN, 1750);
-        condition.setSensor(tachometer);
+        Condition condition = new Condition("Engine is idling","RPMs are below and 1750", RelationalOperator.LESS_THAN, 1750, tachometer);
         assertTrue(condition.evaluate());
 
-        condition.setSensor(tachometer2);
-        assertFalse(condition.evaluate());
+        Condition condition2 = new Condition("Engine is idling","RPMs are below and 1750", RelationalOperator.LESS_THAN, 1750, tachometer2);
+        assertFalse(condition2.evaluate());
     }
 
     @Test
@@ -37,8 +36,7 @@ public class ConditionTest {
         doReturn(1750).when(tachometer).getValue();
 
         //Initialize condition and join mock sensor
-        Condition condition = new Condition("Engine is idling","RPMs are below and 1750", RelationalOperator.LESS_OR_EQUAL_THAN, 1750);
-        condition.setSensor(tachometer);
+        Condition condition = new Condition("Engine is idling","RPMs are below and 1750", RelationalOperator.LESS_OR_EQUAL_THAN, 1750, tachometer);
 
         assertTrue(condition.evaluate());
     }
@@ -50,8 +48,7 @@ public class ConditionTest {
         doReturn(0).when(speedometer).getValue();
 
         //Initialize condition and join mock sensor
-        Condition condition = new Condition("Standing still","Motorcycle's speed is 0", RelationalOperator.EQUAL_THAN, 0);
-        condition.setSensor(speedometer);
+        Condition condition = new Condition("Standing still","Motorcycle's speed is 0", RelationalOperator.EQUAL_THAN, 0, speedometer);
 
         assertTrue(condition.evaluate());
     }
@@ -63,8 +60,7 @@ public class ConditionTest {
         doReturn(90).when(throttleBody).getValue();
 
         //Initialize condition and join mock sensor
-        Condition condition = new Condition("Full gas","Throttle body is open at 90% or more", RelationalOperator.MORE_OR_EQUAL_THAN, 90);
-        condition.setSensor(throttleBody);
+        Condition condition = new Condition("Full gas","Throttle body is open at 90% or more", RelationalOperator.MORE_OR_EQUAL_THAN, 90, throttleBody);
 
         assertTrue(condition.evaluate());
     }
@@ -76,8 +72,7 @@ public class ConditionTest {
         doReturn(35).when(gyroscopex).getValue();
 
         //Initialize condition and join mock sensor
-        Condition condition = new Condition("Wheelie","Motorcycle is inclined positively on X axis", RelationalOperator.MORE_THAN, 25);
-        condition.setSensor(gyroscopex);
+        Condition condition = new Condition("Wheelie","Motorcycle is inclined positively on X axis", RelationalOperator.MORE_THAN, 25, gyroscopex);
 
         assertTrue(condition.evaluate());
     }
