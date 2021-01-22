@@ -108,7 +108,7 @@ public class RuleTest {
         ms05.setActions(a1);
         ms05.setConditions(c5, c6, c7);
         ms05.triggerActions();
-        
+
         assertFalse(ms05.allConditionsAreMet());
         assertNotEquals(4000, ecuManagerLimitRPM.getMaxRPMs());
     }
