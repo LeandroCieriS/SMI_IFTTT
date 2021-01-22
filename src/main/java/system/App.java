@@ -10,7 +10,7 @@ public class App {
         ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
         ECUManagerCloseThrottle ecuManagerCloseThrottle = new ECUManagerCloseThrottle();
         Display display = new Display();
-        FallAllert fallAllert = new FallAllert();
+        FallAlert fallAlert = new FallAlert();
 
         //Sensors
         CoolantTempSensor coolantTemp = new CoolantTempSensor();
