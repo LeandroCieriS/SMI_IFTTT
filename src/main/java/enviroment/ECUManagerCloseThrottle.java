@@ -2,7 +2,7 @@ package enviroment;
 
 public class ECUManagerCloseThrottle implements Actuator {
 
-    private int percentageThrottleIsOpen;
+    private int percentageThrottleIsOpen=-1;
 
     public int getPercentageThrottleIsOpen() {
         return percentageThrottleIsOpen;

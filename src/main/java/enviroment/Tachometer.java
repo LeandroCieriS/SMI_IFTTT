@@ -2,7 +2,7 @@ package enviroment;
 
 public class Tachometer implements Sensor{
 
-    private int RPMs;
+    private int RPMs=-1;
 
     @Override
     public int getValue() {

@@ -20,6 +20,8 @@ public class Condition {
     }
 
     public boolean evaluate(){
+        if (sensor.getValue() < 0)
+            return false;
         switch (relationalOperator) {
             case LESS_THAN:
                 return sensor.getValue() < threshold;

@@ -18,17 +18,20 @@ public class Rule {
         this.desc = desc;
     }
 
-    protected boolean allConditionsAreMet(){
-        for (Condition con : conditions) {
-            if (!con.evaluate()) return false;
-        }
-        return true;
+    public boolean allConditionsAreMet(){
+        if(conditions.size()>0) {
+            for (Condition con : conditions) {
+                if (!con.evaluate()) return false;
+            }
+            return true;
+        } else return false;
     }
 
-    protected void triggerActions(){
-        for (Action act : actions) {
-            act.execute();
-        }
+    public void triggerActions(){
+        if(allConditionsAreMet())
+            for (Action act : actions) {
+                act.execute();
+            }
     }
 
     public List<Condition> getConditions() {
