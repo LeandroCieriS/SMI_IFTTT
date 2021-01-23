@@ -19,7 +19,7 @@ public class Rule {
     }
 
     public boolean allConditionsAreMet(){
-        if(conditions.size()>0) {
+        if(!conditions.isEmpty()) {
             for (Condition con : conditions) {
                 if (!con.evaluate()) return false;
             }

@@ -21,7 +21,7 @@ public class App {
         Tachometer tachometer = new Tachometer();
         ThrottleBody throttleBody = new ThrottleBody();
 
-        Account account = new Account(1,"Beginner", "123456", "beginner@test.com");
+        Profile account = new Profile(1,"Beginner");
 
         Rule ms01 = new Rule(1,"Launch Control", "Activates a soft limiter on revs while standing still");
         Condition c1 = new Condition("Standing","Speed is lower or equal than 2 kph", RelationalOperator.LESS_OR_EQUAL_THAN, 2, speedometer);
