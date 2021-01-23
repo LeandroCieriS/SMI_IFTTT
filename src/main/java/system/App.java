@@ -1,10 +1,18 @@
 package system;
 
+import UI.MainDashboard;
 import enviroment.*;
+
+import javax.swing.*;
 
 public class App {
 
     public static void main(String[] args) {
+
+        //UI
+        JFrame mainDashboard = new MainDashboard();
+        mainDashboard.setSize(750,450);
+        mainDashboard.setVisible(true);
 
         //Actuators
         ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();

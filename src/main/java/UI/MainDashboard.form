@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.MainDashboard">
+  <grid id="27dc6" binding="panel" layout-manager="GridLayoutManager" row-count="10" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="0" vgap="0">
+    <margin top="0" left="30" bottom="30" right="30"/>
+    <constraints>
+      <xy x="20" y="20" width="900" height="500"/>
+    </constraints>
+    <properties>
+      <maximumSize width="900" height="450"/>
+      <minimumSize width="900" height="450"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="4f875" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Sensors"/>
+        </properties>
+      </component>
+      <component id="43582" class="javax.swing.JSeparator">
+        <constraints>
+          <grid row="0" column="2" row-span="8" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <orientation value="1"/>
+        </properties>
+      </component>
+      <component id="f3814" class="javax.swing.JSeparator">
+        <constraints>
+          <grid row="0" column="4" row-span="8" col-span="1" vsize-policy="6" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <orientation value="1"/>
+        </properties>
+      </component>
+      <component id="156fc" class="javax.swing.JSeparator">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+      <grid id="46edd" layout-manager="GridLayoutManager" row-count="5" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="5">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="a19f2" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Rider"/>
+            </properties>
+          </component>
+          <component id="ba082" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Throttle"/>
+            </properties>
+          </component>
+          <component id="660ec" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Lean Angle"/>
+            </properties>
+          </component>
+          <component id="f4a1f" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Wheelie Angle  "/>
+            </properties>
+          </component>
+          <component id="b1dc9" class="javax.swing.JSlider" binding="sliderThrottle">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="150" height="-1"/>
+                <preferred-size width="150" height="-1"/>
+                <maximum-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <paintLabels value="true"/>
+              <paintTicks value="false"/>
+              <paintTrack value="true"/>
+              <value value="0"/>
+              <valueIsAdjusting value="false"/>
+            </properties>
+          </component>
+          <component id="460fa" class="javax.swing.JSlider" binding="sliderLean">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="150" height="-1"/>
+                <preferred-size width="150" height="-1"/>
+                <maximum-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <maximum value="70"/>
+              <minimum value="-70"/>
+              <paintLabels value="true"/>
+              <paintTicks value="false"/>
+              <paintTrack value="true"/>
+              <value value="0"/>
+              <valueIsAdjusting value="false"/>
+            </properties>
+          </component>
+          <component id="523e8" class="javax.swing.JSlider" binding="sliderWheelie">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="150" height="-1"/>
+                <preferred-size width="150" height="-1"/>
+                <maximum-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <maximum value="90"/>
+              <paintLabels value="true"/>
+              <paintTicks value="false"/>
+              <paintTrack value="true"/>
+              <value value="0"/>
+              <valueIsAdjusting value="false"/>
+            </properties>
+          </component>
+          <component id="4e765" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="    Speed"/>
+            </properties>
+          </component>
+          <component id="3ed7" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="    RPMs"/>
+            </properties>
+          </component>
+          <component id="de5f5" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="    Coolant temp  "/>
+            </properties>
+          </component>
+          <component id="290b5" class="javax.swing.JTextField" binding="speedTF">
+            <constraints>
+              <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <text value="0"/>
+            </properties>
+          </component>
+          <component id="2951a" class="javax.swing.JTextField" binding="rpmTF">
+            <constraints>
+              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <text value="1100"/>
+            </properties>
+          </component>
+          <component id="d4500" class="javax.swing.JTextField" binding="coolantTF">
+            <constraints>
+              <grid row="3" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <text value="90"/>
+            </properties>
+          </component>
+          <component id="42cf4" class="javax.swing.JLabel" binding="labelThrottle">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="-1"/>
+                <preferred-size width="40" height="-1"/>
+                <maximum-size width="40" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="2"/>
+              <horizontalTextPosition value="2"/>
+              <text value="0"/>
+            </properties>
+          </component>
+          <component id="3e245" class="javax.swing.JLabel" binding="labelLean">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="-1"/>
+                <preferred-size width="40" height="-1"/>
+                <maximum-size width="40" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="2"/>
+              <horizontalTextPosition value="2"/>
+              <text value="0"/>
+            </properties>
+          </component>
+          <component id="3b3ae" class="javax.swing.JLabel" binding="labelWheelie">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="40" height="-1"/>
+                <preferred-size width="40" height="-1"/>
+                <maximum-size width="40" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <horizontalAlignment value="2"/>
+              <horizontalTextPosition value="2"/>
+              <text value="0"/>
+            </properties>
+          </component>
+          <grid id="1cdd8" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="6" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="cc7ce" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <labelFor value="a1d77"/>
+                  <text value="Gear  "/>
+                </properties>
+              </component>
+              <component id="a1d77" class="javax.swing.JComboBox" binding="gear">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="55" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <editable value="false"/>
+                  <model>
+                    <item value="N"/>
+                    <item value="1"/>
+                    <item value="2"/>
+                    <item value="3"/>
+                    <item value="4"/>
+                    <item value="5"/>
+                    <item value="6"/>
+                  </model>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <component id="ce24a" class="javax.swing.JSeparator">
+            <constraints>
+              <grid row="1" column="3" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <orientation value="1"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="e4cde" layout-manager="GridLayoutManager" row-count="1" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="300" height="-1"/>
+            <preferred-size width="255" height="24"/>
+            <maximum-size width="300" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="56dda" class="javax.swing.JRadioButton" binding="beginnerRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Beginner"/>
+            </properties>
+          </component>
+          <component id="540e8" class="javax.swing.JRadioButton" binding="intermediateRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Intermediate"/>
+            </properties>
+          </component>
+          <component id="6a640" class="javax.swing.JRadioButton" binding="experiencedRadioButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Experienced"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="f76f0" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="2" column="3" row-span="6" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="300" height="-1"/>
+            <preferred-size width="255" height="130"/>
+            <maximum-size width="300" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="e7289" class="javax.swing.JCheckBox" binding="MS01LaunchControlCheckBox" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="886" height="21"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="MS01: Launch Control"/>
+            </properties>
+          </component>
+          <component id="ad2a9" class="javax.swing.JCheckBox" binding="MS02WheelieControlCheckBox" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="886" height="21"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="MS02: Wheelie Control"/>
+            </properties>
+          </component>
+          <component id="8f538" class="javax.swing.JCheckBox" binding="MS03LeanInformationCheckBox" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="886" height="21"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="MS03: Lean Information"/>
+            </properties>
+          </component>
+          <component id="7ed36" class="javax.swing.JCheckBox" binding="MS04CornerExitControlCheckBox" default-binding="true">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="886" height="21"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="MS04: Corner Exit Control"/>
+            </properties>
+          </component>
+          <component id="6dd9f" class="javax.swing.JCheckBox" binding="MS05ColdEngineProtectionCheckBox" default-binding="true">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="886" height="21"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="MS05: Cold Engine Protection"/>
+            </properties>
+          </component>
+          <component id="3aadb" class="javax.swing.JCheckBox" binding="MS06RevsSoftLimiterCheckBox" default-binding="true">
+            <constraints>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="886" height="21"/>
+              </grid>
+            </constraints>
+            <properties>
+              <text value="MS06: Revs Soft Limiter"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="88d98" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="255" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="User"/>
+        </properties>
+      </component>
+      <component id="3f200" class="javax.swing.JTextField" binding="coolantSensorTF">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="90"/>
+        </properties>
+      </component>
+      <component id="ddb4f" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Coolant temp:  "/>
+        </properties>
+      </component>
+      <component id="6f04c" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gear:"/>
+        </properties>
+      </component>
+      <component id="d027" class="javax.swing.JTextField" binding="gearTF">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="N"/>
+        </properties>
+      </component>
+      <component id="6362a" class="javax.swing.JTextField" binding="gyroXTF">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="6d620" class="javax.swing.JTextField" binding="gyroYTF">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="1b182" class="javax.swing.JTextField" binding="speedometerTF">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="eae31" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gyroscope X:"/>
+        </properties>
+      </component>
+      <component id="78545" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Gyroscope Y:"/>
+        </properties>
+      </component>
+      <component id="fd258" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Speed:"/>
+        </properties>
+      </component>
+      <component id="4340b" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Tachometer:"/>
+        </properties>
+      </component>
+      <component id="92d72" class="javax.swing.JTextField" binding="tachometerTF">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="1100"/>
+        </properties>
+      </component>
+      <component id="1f00b" class="javax.swing.JTextField" binding="throttleTF">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="55" height="-1"/>
+            <preferred-size width="55" height="-1"/>
+            <maximum-size width="55" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <horizontalAlignment value="0"/>
+          <text value="0"/>
+        </properties>
+      </component>
+      <component id="b9596" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Throttle:"/>
+        </properties>
+      </component>
+      <grid id="b8f18" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="7">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="5" row-span="7" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="884c7" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Display:"/>
+            </properties>
+          </component>
+          <component id="924b7" class="javax.swing.JTextField" binding="displayTF">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <horizontalAlignment value="0"/>
+              <text value="0"/>
+            </properties>
+          </component>
+          <component id="e592f" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="ECU max throttle:  "/>
+            </properties>
+          </component>
+          <component id="c55a5" class="javax.swing.JTextField" binding="ecuThrottle">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <horizontalAlignment value="0"/>
+              <text value="100"/>
+            </properties>
+          </component>
+          <component id="5ea5c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="ECU max RPMs:"/>
+            </properties>
+          </component>
+          <component id="71a5e" class="javax.swing.JTextField" binding="ecuRPMs">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <horizontalAlignment value="0"/>
+              <text value="10000"/>
+            </properties>
+          </component>
+          <component id="7fbee" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Fall Alert:"/>
+            </properties>
+          </component>
+          <component id="d0ab4" class="javax.swing.JProgressBar" binding="fallBar">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                <minimum-size width="55" height="-1"/>
+                <preferred-size width="55" height="-1"/>
+                <maximum-size width="55" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <maximum value="3"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="371c6" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Actuators"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
