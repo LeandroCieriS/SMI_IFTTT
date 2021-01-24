@@ -8,4 +8,9 @@ public class Tachometer implements Sensor{
     public int getValue() {
         return RPMs;
     }
+
+    @Override
+    public void dataSource(int valueFromSource) {
+        RPMs = valueFromSource;
+    }
 }

@@ -8,4 +8,9 @@ public class ThrottleBody implements Sensor {
     public int getValue() {
         return throttlePosition;
     }
+
+    @Override
+    public void dataSource(int valueFromSource) {
+        throttlePosition = valueFromSource;
+    }
 }

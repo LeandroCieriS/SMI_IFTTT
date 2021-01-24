@@ -8,4 +8,9 @@ public class Speedometer implements Sensor {
     public int getValue() {
         return speed;
     }
+
+    @Override
+    public void dataSource(int valueFromSource) {
+        speed = valueFromSource;
+    }
 }

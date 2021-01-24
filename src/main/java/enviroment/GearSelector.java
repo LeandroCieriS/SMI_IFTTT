@@ -7,4 +7,9 @@ public class GearSelector implements Sensor{
     public int getValue() {
         return gearEngaged;
     }
+
+    @Override
+    public void dataSource(int valueFromSource) {
+        gearEngaged = valueFromSource;
+    }
 }

@@ -8,4 +8,9 @@ public class GyroscopeX implements Sensor {
     public int getValue() {
         return inclinationXAxis;
     }
+
+    @Override
+    public void dataSource(int valueFromSource) {
+        inclinationXAxis = valueFromSource;
+    }
 }

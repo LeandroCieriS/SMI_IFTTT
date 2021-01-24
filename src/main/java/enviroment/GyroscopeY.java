@@ -7,4 +7,9 @@ public class GyroscopeY implements Sensor{
     public int getValue() {
         return inclinationYAxis;
     }
+
+    @Override
+    public void dataSource(int valueFromSource) {
+        inclinationYAxis = valueFromSource;
+    }
 }

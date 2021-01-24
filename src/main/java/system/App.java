@@ -3,16 +3,11 @@ package system;
 import UI.MainDashboard;
 import enviroment.*;
 
-import javax.swing.*;
+import java.util.ArrayList;
 
 public class App {
 
     public static void main(String[] args) {
-
-        //UI
-        JFrame mainDashboard = new MainDashboard();
-        mainDashboard.setSize(750,450);
-        mainDashboard.setVisible(true);
 
         //Actuators
         ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
@@ -28,6 +23,20 @@ public class App {
         Speedometer speedometer = new Speedometer();
         Tachometer tachometer = new Tachometer();
         ThrottleBody throttleBody = new ThrottleBody();
+        ArrayList<Sensor> sensors = new ArrayList<Sensor>(){{
+            add(coolantTemp);
+            add(gearSelector);
+            add(gyroscopeX);
+            add(gyroscopeY);
+            add(speedometer);
+            add(tachometer);
+            add(throttleBody);
+        }};
+
+        //UI
+        MainDashboard mainDashboard = new MainDashboard(sensors);
+        mainDashboard.setSize(750,450);
+        mainDashboard.setVisible(true);
 
         Profile account = new Profile(1,"Beginner");
 

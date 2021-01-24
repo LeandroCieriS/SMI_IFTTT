@@ -1,10 +1,13 @@
 package UI;
 
+import enviroment.Sensor;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Objects;
+import static java.lang.Math.abs;
 
 public class MainDashboard extends JFrame{
     private JTextField coolantSensorTF;
@@ -39,60 +42,64 @@ public class MainDashboard extends JFrame{
     private JTextField tachometerTF;
     private JTextField throttleTF;
 
-    public MainDashboard(){
+    public MainDashboard(ArrayList<Sensor> sensors){
         super("SMI Dashboard");
         setContentPane(panel);
-
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(beginnerRadioButton);
-        bg.add(intermediateRadioButton);
-        bg.add(experiencedRadioButton);
 
         speedTF.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
-                speedometerTF.setText(speedTF.getText());
+                sensors.get(4).dataSource(getValueFromRider("speed"));
+                speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
             }
 
             @Override
             public void removeUpdate(DocumentEvent documentEvent) {
-                speedometerTF.setText(speedTF.getText());
+                sensors.get(4).dataSource(getValueFromRider("speed"));
+                speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
             }
 
             public void changedUpdate(DocumentEvent e) {
-                speedometerTF.setText(speedTF.getText());
+                sensors.get(4).dataSource(getValueFromRider("speed"));
+                speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
             }
         });
 
         rpmTF.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
-                tachometerTF.setText(rpmTF.getText());
+                sensors.get(5).dataSource(getValueFromRider("rpm"));
+                tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
             }
 
             @Override
             public void removeUpdate(DocumentEvent documentEvent) {
-                tachometerTF.setText(rpmTF.getText());
+                sensors.get(5).dataSource(getValueFromRider("rpm"));
+                tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
             }
 
             public void changedUpdate(DocumentEvent e) {
-                tachometerTF.setText(rpmTF.getText());
+                sensors.get(5).dataSource(getValueFromRider("rpm"));
+                tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
             }
         });
 
         coolantTF.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
-                coolantSensorTF.setText(coolantTF.getText());
+                sensors.get(0).dataSource(getValueFromRider("temp"));
+                coolantSensorTF.setText(String.valueOf(sensors.get(0).getValue()));
             }
 
             @Override
             public void removeUpdate(DocumentEvent documentEvent) {
-                coolantSensorTF.setText(coolantTF.getText());
+                sensors.get(0).dataSource(getValueFromRider("temp"));
+                coolantSensorTF.setText(String.valueOf(sensors.get(0).getValue()));
             }
 
             public void changedUpdate(DocumentEvent e) {
-                coolantSensorTF.setText(coolantTF.getText());
+                sensors.get(0).dataSource(getValueFromRider("temp"));
+                coolantSensorTF.setText(String.valueOf(sensors.get(0).getValue()));
             }
         });
 
@@ -125,22 +132,69 @@ public class MainDashboard extends JFrame{
             }
         });
 
-        gear.addActionListener (e -> gearTF.setText(gear.getSelectedItem().toString()));
+        gear.addActionListener (e -> {
+            sensors.get(1).dataSource(getValueFromRider("gear"));
+            int gear = sensors.get(1).getValue();
+            if (gear == 0)
+                gearTF.setText("N");
+            else
+                gearTF.setText(String.valueOf(gear));
+        });
 
         sliderThrottle.addChangeListener(changeEvent -> {
-            labelThrottle.setText(String.valueOf(sliderThrottle.getValue()));
-            throttleTF.setText(String.valueOf(sliderThrottle.getValue()));
+            sensors.get(6).dataSource(getValueFromRider("throttle"));
+            labelThrottle.setText(String.valueOf(sensors.get(6).getValue()));
+            throttleTF.setText(String.valueOf(sensors.get(6).getValue()));
         });
 
         sliderLean.addChangeListener(changeEvent -> {
-            labelLean.setText(String.valueOf(sliderLean.getValue()));
-            gyroXTF.setText(String.valueOf(sliderLean.getValue()));
-
+            sensors.get(2).dataSource(getValueFromRider("leanx"));
+            labelLean.setText(String.valueOf(sensors.get(2).getValue()));
+            gyroXTF.setText(String.valueOf(sensors.get(2).getValue()));
         });
 
         sliderWheelie.addChangeListener(changeEvent -> {
-            labelWheelie.setText(String.valueOf(sliderWheelie.getValue()));
-            gyroYTF.setText(String.valueOf(sliderWheelie.getValue()));
+            sensors.get(3).dataSource(getValueFromRider("leany"));
+            labelWheelie.setText(String.valueOf(sensors.get(3).getValue()));
+            gyroYTF.setText(String.valueOf(sensors.get(3).getValue()));
         });
+    }
+    public int getValueFromRider(String value){
+        switch (value) {
+
+            case "speed":
+                int speed = 0;
+                if (!speedTF.getText().equals(""))
+                    speed = Integer.parseInt(speedTF.getText());
+                return speed;
+
+            case "rpm":
+                int rpm = 0;
+                if (!rpmTF.getText().equals(""))
+                    rpm = Integer.parseInt(rpmTF.getText());
+                return rpm;
+
+            case "leanx":
+                return abs(sliderLean.getValue());
+
+            case "leany":
+                return sliderWheelie.getValue();
+
+            case "temp":
+                int temp = 0;
+                if (!coolantTF.getText().equals(""))
+                    temp = Integer.parseInt(coolantTF.getText());
+                return temp;
+
+            case "gear":
+                if (Objects.requireNonNull(gear.getSelectedItem()).toString().equals("N"))
+                    return 0;
+                else
+                    return Integer.parseInt(gear.getSelectedItem().toString());
+
+            case "throttle":
+                return sliderThrottle.getValue();
+        }
+        return -1;
     }
 }
