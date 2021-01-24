@@ -2,15 +2,20 @@ package enviroment;
 
 public class ECUManagerCloseThrottle implements Actuator {
 
-    private int percentageThrottleIsOpen=-1;
-
-    public int getPercentageThrottleIsOpen() {
-        return percentageThrottleIsOpen;
-    }
+    private int percentageThrottleIsOpen = 100;
 
     @Override
     public void execute(int percentageThrottleIsOpen) {
-        if (percentageThrottleIsOpen >= 0 && percentageThrottleIsOpen <=100)
-            this.percentageThrottleIsOpen = percentageThrottleIsOpen;
+        this.percentageThrottleIsOpen = percentageThrottleIsOpen;
+    }
+
+    @Override
+    public void resetValue() {
+        percentageThrottleIsOpen = 100;
+    }
+
+    @Override
+    public int getValue() {
+        return percentageThrottleIsOpen;
     }
 }

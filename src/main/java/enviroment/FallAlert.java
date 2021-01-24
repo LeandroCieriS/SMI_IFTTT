@@ -4,9 +4,11 @@ import static enviroment.Risk.*;
 
 public class FallAlert implements Actuator{
     private Risk risk;
+    private int riskInt;
 
     @Override
     public void execute(int risk) {
+        riskInt = risk;
         switch (risk){
             case 0:
                 this.risk = LOW;
@@ -23,7 +25,13 @@ public class FallAlert implements Actuator{
         }
     }
 
-    public Risk getRisk() {
-        return risk;
+    @Override
+    public void resetValue() {
+        risk = LOW;
+    }
+
+    @Override
+    public int getValue() {
+        return riskInt;
     }
 }

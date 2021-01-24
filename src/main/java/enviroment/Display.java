@@ -9,7 +9,13 @@ public class Display implements Actuator {
         this.degrees = degrees;
     }
 
-    public int getDegrees() {
+    @Override
+    public void resetValue() {
+        degrees = 0;
+    }
+
+    @Override
+    public int getValue() {
         return degrees;
     }
 }

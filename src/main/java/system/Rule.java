@@ -32,6 +32,10 @@ public class Rule {
             for (Action act : actions) {
                 act.execute();
             }
+        else
+            for (Action act : actions) {
+                act.getActuator().resetValue();
+            }
     }
 
     public List<Condition> getConditions() {
@@ -48,5 +52,9 @@ public class Rule {
 
     public void setActions(Action... actions) {
         Collections.addAll(this.actions, actions);
+    }
+
+    public int getID() {
+        return ID;
     }
 }

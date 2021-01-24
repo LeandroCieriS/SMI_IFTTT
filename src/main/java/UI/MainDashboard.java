@@ -27,6 +27,7 @@ public class MainDashboard extends JFrame{
     private JSlider sliderThrottle;
     private JSlider sliderLean;
     private JSlider sliderWheelie;
+    private JSlider sliderRPMs;
     private JPanel panel;
     private JComboBox<String> gear;
     private JLabel labelThrottle;
@@ -36,11 +37,12 @@ public class MainDashboard extends JFrame{
     private JTextField gyroXTF;
     private JTextField gyroYTF;
     private JTextField speedTF;
-    private JTextField rpmTF;
     private JTextField coolantTF;
     private JTextField speedometerTF;
     private JTextField tachometerTF;
     private JTextField throttleTF;
+    private JLabel labelRPMs;
+
 
     public MainDashboard(ArrayList<Sensor> sensors){
         super("SMI Dashboard");
@@ -62,25 +64,6 @@ public class MainDashboard extends JFrame{
             public void changedUpdate(DocumentEvent e) {
                 sensors.get(4).dataSource(getValueFromRider("speed"));
                 speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
-            }
-        });
-
-        rpmTF.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent documentEvent) {
-                sensors.get(5).dataSource(getValueFromRider("rpm"));
-                tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent documentEvent) {
-                sensors.get(5).dataSource(getValueFromRider("rpm"));
-                tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
-            }
-
-            public void changedUpdate(DocumentEvent e) {
-                sensors.get(5).dataSource(getValueFromRider("rpm"));
-                tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
             }
         });
 
@@ -120,8 +103,7 @@ public class MainDashboard extends JFrame{
         ecuRPMs.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
-                if(Integer.parseInt(rpmTF.getText()) > Integer.parseInt(ecuRPMs.getText()))
-                    rpmTF.setText(ecuRPMs.getText());
+                sliderRPMs.setMaximum(Integer.parseInt(ecuRPMs.getText()));
             }
 
             @Override
@@ -139,6 +121,12 @@ public class MainDashboard extends JFrame{
                 gearTF.setText("N");
             else
                 gearTF.setText(String.valueOf(gear));
+        });
+
+        sliderRPMs.addChangeListener(changeEvent -> {
+            sensors.get(5).dataSource(getValueFromRider("rpm"));
+            labelRPMs.setText(String.valueOf(sensors.get(5).getValue()));
+            tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
         });
 
         sliderThrottle.addChangeListener(changeEvent -> {
@@ -159,6 +147,7 @@ public class MainDashboard extends JFrame{
             gyroYTF.setText(String.valueOf(sensors.get(3).getValue()));
         });
     }
+
     public int getValueFromRider(String value){
         switch (value) {
 
@@ -169,10 +158,7 @@ public class MainDashboard extends JFrame{
                 return speed;
 
             case "rpm":
-                int rpm = 0;
-                if (!rpmTF.getText().equals(""))
-                    rpm = Integer.parseInt(rpmTF.getText());
-                return rpm;
+                return sliderRPMs.getValue();
 
             case "leanx":
                 return abs(sliderLean.getValue());
@@ -196,5 +182,22 @@ public class MainDashboard extends JFrame{
                 return sliderThrottle.getValue();
         }
         return -1;
+    }
+
+    public void setValueFromActuator(String actuator, int value){
+        switch (actuator){
+            case "Display":
+                displayTF.setText(String.valueOf(value));
+                break;
+            case "ECUManagerLimitRPM":
+                ecuRPMs.setText(String.valueOf(value));
+                break;
+            case "ECUManagerCloseThrottle":
+                ecuThrottle.setText(String.valueOf(value));
+                break;
+            case "FallAlert":
+                fallBar.setValue(value);
+                break;
+        }
     }
 }

@@ -2,7 +2,7 @@ package enviroment;
 
 public class GyroscopeX implements Sensor {
 
-    private int inclinationXAxis=-1;
+    private int inclinationXAxis = -1;
 
     @Override
     public int getValue() {

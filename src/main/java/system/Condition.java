@@ -37,4 +37,8 @@ public class Condition {
                 return false;
         }
     }
+
+    public Sensor getSensor() {
+        return sensor;
+    }
 }
