@@ -22,4 +22,8 @@ public class Profile {
     public void setRules(Rule... rules) {
         Collections.addAll(this.rules, rules);
     }
+
+    public String getProfileName() {
+        return profileName;
+    }
 }

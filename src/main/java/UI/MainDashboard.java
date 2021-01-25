@@ -1,6 +1,7 @@
 package UI;
 
 import enviroment.Sensor;
+import system.Profile;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -14,11 +15,11 @@ public class MainDashboard extends JFrame{
     private JRadioButton beginnerRadioButton;
     private JRadioButton intermediateRadioButton;
     private JRadioButton experiencedRadioButton;
-    private JCheckBox MS01LaunchControlCheckBox;
-    private JCheckBox MS02WheelieControlCheckBox;
-    private JCheckBox MS03LeanInformationCheckBox;
-    private JCheckBox MS04CornerExitControlCheckBox;
-    private JCheckBox MS05ColdEngineProtectionCheckBox;
+    private JCheckBox MS01CheckBox;
+    private JCheckBox MS02CheckBox;
+    private JCheckBox MS03CheckBox;
+    private JCheckBox MS04CheckBox;
+    private JCheckBox MS05CheckBox;
     private JTextField displayTF;
     private JTextField ecuThrottle;
     private JTextField ecuRPMs;
@@ -43,10 +44,12 @@ public class MainDashboard extends JFrame{
     private JLabel labelRPMs;
     private final ArrayList<Sensor> sensors;
 
-    public MainDashboard(ArrayList<Sensor> sensors){
+    public MainDashboard(ArrayList<Sensor> sensors, Profile profile){
         super("SMI Dashboard");
         setContentPane(panel);
         this.sensors = sensors;
+
+        selectProfile(profile);
 
         speedTF.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -146,6 +149,36 @@ public class MainDashboard extends JFrame{
             labelWheelie.setText(getStringValueFromSensor(3));
             gyroYTF.setText(getStringValueFromSensor(3));
         });
+    }
+
+    private void selectProfile(Profile profile) {
+        switch (profile.getProfileName()){
+            case "Beginner":
+                beginnerRadioButton.setSelected(true);
+                MS01CheckBox.setSelected(true);
+                MS02CheckBox.setSelected(true);
+                MS03CheckBox.setSelected(true);
+                MS04CheckBox.setSelected(false);
+                MS05CheckBox.setSelected(false);
+                break;
+            case "Intermediate":
+                intermediateRadioButton.setSelected(true);
+                MS01CheckBox.setSelected(false);
+                MS02CheckBox.setSelected(false);
+                MS03CheckBox.setSelected(true);
+                MS04CheckBox.setSelected(true);
+                MS05CheckBox.setSelected(true);
+                break;
+            case "Experienced":
+                experiencedRadioButton.setSelected(true);
+                MS01CheckBox.setSelected(false);
+                MS02CheckBox.setSelected(false);
+                MS03CheckBox.setSelected(true);
+                MS04CheckBox.setSelected(false);
+                MS05CheckBox.setSelected(true);
+                break;
+
+        }
     }
 
     private String getStringValueFromSensor(int sensor){

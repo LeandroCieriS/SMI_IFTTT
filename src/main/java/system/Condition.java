@@ -9,7 +9,7 @@ public class Condition {
     private final int threshold;
     private final RelationalOperator relationalOperator;
 
-    private Sensor sensor;
+    private final Sensor sensor;
 
     public Condition(String name, String desc, RelationalOperator relationalOperatorToBeTrue, int threshold, Sensor sensor) {
         this.name = name;

@@ -34,14 +34,7 @@ public class App {
             add(throttleBody);
         }};
 
-        //UI
-        MainDashboard mainDashboard = new MainDashboard(sensors);
-        mainDashboard.setSize(750,450);
-        mainDashboard.setVisible(true);
-
-
         //Rules
-
         Rule ms01 = new Rule(1,"Launch Control", "Activates a soft limiter on revs while standing still");
         Condition c1 = new Condition("Standing","Speed is lower or equal than 2 kph", RelationalOperator.LESS_OR_EQUAL_THAN, 2, speedometer);
         Condition c2 = new Condition("First gear","The transmission has first gear engaged", RelationalOperator.EQUAL_THAN, 1, gearSelector);
@@ -58,11 +51,10 @@ public class App {
 
         Rule ms03 = new Rule(3, "lean info", "displays information about the lean angle");
         Condition c5 = new Condition("Leaning", "The motorcycle is leaning", RelationalOperator.MORE_THAN, 0, gyroscopeX);
-        Condition c6 = new Condition("Moving", "The motorcycle is moving", RelationalOperator.MORE_THAN, 2, speedometer);
         Action a3 = new Action("Display lean angle", "Shows the angle the gyroscope X is reading", display, gyroscopeX.getValue());
         Action a4 = new Action("Display fall alert", "Shows the risk level of the current lean angle", fallAlert, 0);
         ms03.setActions(a3, a4);
-        ms03.setConditions(c5, c6);
+        ms03.setConditions(c5);
 
         Rule ms04 = new Rule(4, "Corner Exit", "Reduces the available throttle on corners exit");
         Condition c7 = new Condition("Leaning a lot", "The motorcycle is leaning more than 30 degrees", RelationalOperator.MORE_THAN, 30, gyroscopeX);
@@ -77,20 +69,27 @@ public class App {
         Action a6 = new Action("Soft limiter", "RPMs are limited to 3500", ecuManagerLimitRPM, 3500);
         ms05.setActions(a6);
         ms05.setConditions(c9, c10);
-        
-        Profile beginnerProfile = new Profile(1,"Beginner");
 
+        //Profiles
+        Profile beginnerProfile = new Profile(1,"Beginner");
         beginnerProfile.setRules(ms01, ms02, ms03);
 
-        Profile intermediateProfile = new Profile(1,"Intermediate");
+        Profile intermediateProfile = new Profile(2,"Intermediate");
+        intermediateProfile.setRules(ms03, ms04, ms05);
 
-        intermediateProfile.setRules(ms03, ms04);
+        Profile experiencedProfile = new Profile(3,"Experienced");
+        experiencedProfile.setRules(ms03, ms05);
 
-        Profile experiencedProfile = new Profile(1,"Experienced");
+        startUIAndThreads(sensors, experiencedProfile);
+    }
 
-        experiencedProfile.setRules(ms03);
+    private static void startUIAndThreads(ArrayList<Sensor> sensors, Profile profile) {
+        MainDashboard mainDashboard = new MainDashboard(sensors, profile);
+        mainDashboard.setSize(750,450);
+        mainDashboard.setResizable(false);
+        mainDashboard.setVisible(true);
 
-        List<Rule> rules = beginnerProfile.getRules();
+        List<Rule> rules = profile.getRules();
         for (Rule rule: rules) {
             Thread rc = new RuleController(rule, mainDashboard);
             rc.start();

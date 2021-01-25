@@ -17,15 +17,13 @@ public class RuleController extends Thread{
     @Override
     public void run() {
         while (true) {
-            synchronized (this) {
-                if (rule.getID() == 3) {
-                    trampaParaRegla3();
-                } else {
-                    rule.triggerActions();
+            if (rule.getID() == 3) {
+                trampaParaRegla3();
+            } else {
+                rule.triggerActions();
 
-                    for (Action a : rule.getActions()) {
-                        mainDashboard.setValueFromActuator(a.getActuator().getClass().getSimpleName(), a.getActuator().getValue());
-                    }
+                for (Action a : rule.getActions()) {
+                    mainDashboard.setValueFromActuator(a.getActuator().getClass().getSimpleName(), a.getActuator().getValue());
                 }
             }
         }

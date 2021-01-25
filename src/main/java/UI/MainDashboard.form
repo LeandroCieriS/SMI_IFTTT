@@ -315,6 +315,7 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="false"/>
               <text value="Beginner"/>
             </properties>
           </component>
@@ -323,6 +324,7 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="false"/>
               <text value="Intermediate"/>
             </properties>
           </component>
@@ -331,6 +333,7 @@
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <enabled value="false"/>
               <text value="Experienced"/>
             </properties>
           </component>
@@ -348,7 +351,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="e7289" class="javax.swing.JCheckBox" binding="MS01LaunchControlCheckBox" default-binding="true">
+          <component id="e7289" class="javax.swing.JCheckBox" binding="MS01CheckBox">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="886" height="21"/>
@@ -359,7 +362,7 @@
               <text value="MS01: Launch Control"/>
             </properties>
           </component>
-          <component id="ad2a9" class="javax.swing.JCheckBox" binding="MS02WheelieControlCheckBox" default-binding="true">
+          <component id="ad2a9" class="javax.swing.JCheckBox" binding="MS02CheckBox">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="886" height="21"/>
@@ -370,7 +373,7 @@
               <text value="MS02: Wheelie Control"/>
             </properties>
           </component>
-          <component id="8f538" class="javax.swing.JCheckBox" binding="MS03LeanInformationCheckBox" default-binding="true">
+          <component id="8f538" class="javax.swing.JCheckBox" binding="MS03CheckBox">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="886" height="21"/>
@@ -381,7 +384,7 @@
               <text value="MS03: Lean Information"/>
             </properties>
           </component>
-          <component id="7ed36" class="javax.swing.JCheckBox" binding="MS04CornerExitControlCheckBox" default-binding="true">
+          <component id="7ed36" class="javax.swing.JCheckBox" binding="MS04CheckBox">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="886" height="21"/>
@@ -392,7 +395,7 @@
               <text value="MS04: Corner Exit Control"/>
             </properties>
           </component>
-          <component id="6dd9f" class="javax.swing.JCheckBox" binding="MS05ColdEngineProtectionCheckBox" default-binding="true">
+          <component id="6dd9f" class="javax.swing.JCheckBox" binding="MS05CheckBox">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
                 <preferred-size width="886" height="21"/>
