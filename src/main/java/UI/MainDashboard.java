@@ -42,27 +42,28 @@ public class MainDashboard extends JFrame{
     private JTextField tachometerTF;
     private JTextField throttleTF;
     private JLabel labelRPMs;
-
+    private final ArrayList<Sensor> sensors;
 
     public MainDashboard(ArrayList<Sensor> sensors){
         super("SMI Dashboard");
         setContentPane(panel);
+        this.sensors = sensors;
 
         speedTF.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
-                sensors.get(4).dataSource(getValueFromRider("speed"));
+                connectSensor(4,"speed");
                 speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
             }
 
             @Override
             public void removeUpdate(DocumentEvent documentEvent) {
-                sensors.get(4).dataSource(getValueFromRider("speed"));
+                connectSensor(4,"speed");
                 speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
             }
 
             public void changedUpdate(DocumentEvent e) {
-                sensors.get(4).dataSource(getValueFromRider("speed"));
+                connectSensor(4,"speed");
                 speedometerTF.setText(String.valueOf(sensors.get(4).getValue()));
             }
         });
@@ -70,18 +71,18 @@ public class MainDashboard extends JFrame{
         coolantTF.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent documentEvent) {
-                sensors.get(0).dataSource(getValueFromRider("temp"));
+                connectSensor(0,"temp");
                 coolantSensorTF.setText(String.valueOf(sensors.get(0).getValue()));
             }
 
             @Override
             public void removeUpdate(DocumentEvent documentEvent) {
-                sensors.get(0).dataSource(getValueFromRider("temp"));
+                connectSensor(0,"temp");
                 coolantSensorTF.setText(String.valueOf(sensors.get(0).getValue()));
             }
 
             public void changedUpdate(DocumentEvent e) {
-                sensors.get(0).dataSource(getValueFromRider("temp"));
+                connectSensor(0,"temp");
                 coolantSensorTF.setText(String.valueOf(sensors.get(0).getValue()));
             }
         });
@@ -115,7 +116,7 @@ public class MainDashboard extends JFrame{
         });
 
         gear.addActionListener (e -> {
-            sensors.get(1).dataSource(getValueFromRider("gear"));
+            connectSensor(1,"gear");
             int gear = sensors.get(1).getValue();
             if (gear == 0)
                 gearTF.setText("N");
@@ -124,28 +125,36 @@ public class MainDashboard extends JFrame{
         });
 
         sliderRPMs.addChangeListener(changeEvent -> {
-            sensors.get(5).dataSource(getValueFromRider("rpm"));
-            labelRPMs.setText(String.valueOf(sensors.get(5).getValue()));
-            tachometerTF.setText(String.valueOf(sensors.get(5).getValue()));
+            connectSensor(5,"rpm");
+            labelRPMs.setText(getStringValueFromSensor(5));
+            tachometerTF.setText(getStringValueFromSensor(5));
         });
 
         sliderThrottle.addChangeListener(changeEvent -> {
-            sensors.get(6).dataSource(getValueFromRider("throttle"));
-            labelThrottle.setText(String.valueOf(sensors.get(6).getValue()));
-            throttleTF.setText(String.valueOf(sensors.get(6).getValue()));
+            connectSensor(6,"throttle");
+            labelThrottle.setText(getStringValueFromSensor(6));
+            throttleTF.setText(getStringValueFromSensor(6));
         });
 
         sliderLean.addChangeListener(changeEvent -> {
-            sensors.get(2).dataSource(getValueFromRider("leanx"));
-            labelLean.setText(String.valueOf(sensors.get(2).getValue()));
-            gyroXTF.setText(String.valueOf(sensors.get(2).getValue()));
+            connectSensor(2,"leanx");
+            labelLean.setText(getStringValueFromSensor(2));
+            gyroXTF.setText(getStringValueFromSensor(2));
         });
 
         sliderWheelie.addChangeListener(changeEvent -> {
-            sensors.get(3).dataSource(getValueFromRider("leany"));
-            labelWheelie.setText(String.valueOf(sensors.get(3).getValue()));
-            gyroYTF.setText(String.valueOf(sensors.get(3).getValue()));
+            connectSensor(3,"leany");
+            labelWheelie.setText(getStringValueFromSensor(3));
+            gyroYTF.setText(getStringValueFromSensor(3));
         });
+    }
+
+    private String getStringValueFromSensor(int sensor){
+        return String.valueOf(sensors.get(sensor).getValue());
+    }
+
+    private void connectSensor(int sensorID, String valueName) {
+        sensors.get(sensorID).dataSource(getValueFromRider(valueName));
     }
 
     public int getValueFromRider(String value){

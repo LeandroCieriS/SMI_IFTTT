@@ -86,7 +86,7 @@ public class App {
         ms06.setActions(a7);
         ms06.setConditions(c11, c12);
 
-        account.setRules(ms01, ms02, ms03, ms04, ms05, ms06); //muchas condiciones a la vez peta
+        account.setRules(ms01, ms02, ms03, ms04, ms05, ms06);
 
         List<Rule> rules = account.getRules();
         for (Rule rule: rules) {

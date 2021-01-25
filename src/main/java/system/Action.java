@@ -7,8 +7,7 @@ public class Action {
     private final String name;
     private final String desc;
     private int value;
-
-    private Actuator actuator;
+    private final Actuator actuator;
 
     public Action(String name, String desc, Actuator actuator, int value) {
         this.name = name;
@@ -27,5 +26,13 @@ public class Action {
 
     public void setValue(int value){
         this.value = value;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 }

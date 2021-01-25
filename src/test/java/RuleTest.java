@@ -19,7 +19,7 @@ public class RuleTest {
         ms01.triggerActions();
 
         assertFalse(ms01.allConditionsAreMet());
-        assertNotEquals(3500, ecuManagerLimitRPM.getMaxRPMs());
+        assertNotEquals(3500, ecuManagerLimitRPM.getValue());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class RuleTest {
         ms01.triggerActions();
 
         assertTrue(ms01.allConditionsAreMet());
-        assertEquals(3500, ecuManagerLimitRPM.getMaxRPMs());
+        assertEquals(3500, ecuManagerLimitRPM.getValue());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class RuleTest {
         ms01.triggerActions();
 
         assertTrue(ms01.allConditionsAreMet());
-        assertEquals(3500, ecuManagerLimitRPM.getMaxRPMs());
+        assertEquals(3500, ecuManagerLimitRPM.getValue());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class RuleTest {
         ms02.triggerActions();
 
         assertFalse(ms02.allConditionsAreMet());
-        assertNotEquals(0, ecuManagerCloseThrottle.getPercentageThrottleIsOpen());
+        assertNotEquals(0, ecuManagerCloseThrottle.getValue());
     }
 
     @Test
@@ -110,6 +110,6 @@ public class RuleTest {
         ms05.triggerActions();
 
         assertFalse(ms05.allConditionsAreMet());
-        assertNotEquals(4000, ecuManagerLimitRPM.getMaxRPMs());
+        assertNotEquals(4000, ecuManagerLimitRPM.getValue());
     }
 }
