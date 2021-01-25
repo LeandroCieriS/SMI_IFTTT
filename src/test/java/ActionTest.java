@@ -12,7 +12,7 @@ public class ActionTest {
         Action a1 = new Action("display inclination", "Shows in a display the inclination  in the Y axis", display, 45);
         a1.execute();
 
-        assertEquals(display.getDegrees(), 45);
+        assertEquals(45, display.getValue());
     }
 
     @Test
@@ -24,8 +24,8 @@ public class ActionTest {
         a1.execute();
         a2.execute();
 
-        assertEquals(ecuManagerCloseThrottle.getPercentageThrottleIsOpen(), 0);
-        assertEquals(ecuManagerLimitRPM.getMaxRPMs(), 4500);
+        assertEquals(0, ecuManagerCloseThrottle.getValue());
+        assertEquals(4500, ecuManagerLimitRPM.getValue());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class ActionTest {
         a1.execute();
         a2.execute();
 
-        assertEquals(fallAlert.getRisk(), Risk.LOW);
-        assertEquals(fallAlert2.getRisk(), Risk.EXTREME);
+        assertEquals(0, fallAlert.getValue());
+        assertEquals(3, fallAlert2.getValue());
     }
 }
