@@ -8,9 +8,18 @@ import static org.mockito.Mockito.mock;
 
 public class RuleTest {
 
+    Speedometer speedometer = mock(Speedometer.class);
+    Tachometer tachometer = mock(Tachometer.class);
+    GyroscopeX gyroscopeX = mock(GyroscopeX.class);
+    CoolantTempSensor coolantTempSensor = mock(CoolantTempSensor.class);
+    GearSelector gearSelector = mock(GearSelector.class);
+
+    ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
+    ECUManagerCloseThrottle ecuManagerCloseThrottle = new ECUManagerCloseThrottle();
+
     @Test
     public void should_not_met_without_conditions(){
-        ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
+
 
         Rule ms01 = new Rule(1,"Launch Control", "Activates a soft limiter on revs while standing still");
         Action a1 = new Action("Soft limiter", "RPMs are limited to 3500", ecuManagerLimitRPM, 3500);
@@ -24,10 +33,7 @@ public class RuleTest {
 
     @Test
     public void should_met_only_condition(){
-        Tachometer tachometer = mock(Tachometer.class);
         doReturn(1100).when(tachometer).getValue();
-
-        ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
 
         Rule ms01 = new Rule(1,"Launch Control", "Activates a soft limiter on revs while standing still");
         Condition c2 = new Condition("Engine is idling","RPMs are below 1750", RelationalOperator.LESS_THAN, 1750, tachometer);
@@ -43,13 +49,8 @@ public class RuleTest {
 
     @Test
     public void should_met_all_conditions(){
-        Speedometer speedometer = mock(Speedometer.class);
-        Tachometer tachometer = mock(Tachometer.class);
-
         doReturn(0).when(speedometer).getValue();
         doReturn(1100).when(tachometer).getValue();
-
-        ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
 
         Rule ms01 = new Rule(1,"Launch Control", "Activates a soft limiter on revs while standing still");
         Condition c1 = new Condition("Standing","Speed is lower or equal than 2 kph", RelationalOperator.LESS_OR_EQUAL_THAN, 2, speedometer);
@@ -66,13 +67,8 @@ public class RuleTest {
 
     @Test
     public void should_not_met_all_conditions(){
-        Speedometer speedometer = mock(Speedometer.class);
-        GyroscopeX gyroscopeX = mock(GyroscopeX.class);
-
         doReturn(20).when(speedometer).getValue();
         doReturn(0).when(gyroscopeX).getValue();
-
-        ECUManagerCloseThrottle ecuManagerCloseThrottle = new ECUManagerCloseThrottle();
 
         Rule ms02 = new Rule(2, "Wheelie control", "Closes the throttle if a wheelie becomes decontrolled");
         Condition c3 = new Condition("Moving","Speed is higher than 2 kph", RelationalOperator.MORE_THAN, 2, speedometer);
@@ -89,15 +85,9 @@ public class RuleTest {
 
     @Test
     public void should_not_met_any_conditions(){
-        CoolantTempSensor coolantTempSensor = mock(CoolantTempSensor.class);
-        GearSelector gearSelector = mock(GearSelector.class);
-        Tachometer tachometer = mock(Tachometer.class);
-
         doReturn(95).when(coolantTempSensor).getValue();
         doReturn(5).when(gearSelector).getValue();
         doReturn(6500).when(tachometer).getValue();
-
-        ECUManagerLimitRPM ecuManagerLimitRPM = new ECUManagerLimitRPM();
 
         Rule ms05 = new Rule(5, "Protect cold engine", "Limit the throttle if the engine is cold and it's in neutral");
         Condition c5 = new Condition("Neutral","the transmission has neutral gear engaged", RelationalOperator.EQUAL_THAN, 0, gearSelector);
