@@ -40,8 +40,7 @@ public class App {
         mainDashboard.setVisible(true);
 
 
-        // Profiles and Rules
-        Profile account = new Profile(1,"Beginner");
+        //Rules
 
         Rule ms01 = new Rule(1,"Launch Control", "Activates a soft limiter on revs while standing still");
         Condition c1 = new Condition("Standing","Speed is lower or equal than 2 kph", RelationalOperator.LESS_OR_EQUAL_THAN, 2, speedometer);
@@ -68,7 +67,7 @@ public class App {
         Rule ms04 = new Rule(4, "Corner Exit", "Reduces the available throttle on corners exit");
         Condition c7 = new Condition("Leaning a lot", "The motorcycle is leaning more than 30 degrees", RelationalOperator.MORE_THAN, 30, gyroscopeX);
         Condition c8 = new Condition("Moving", "The motorcycle is moving", RelationalOperator.MORE_THAN, 10, speedometer);
-        Action a5 = new Action("Reduce gas", "Closes the throttle up to 60%", ecuManagerCloseThrottle, 40);
+        Action a5 = new Action("Reduce gas", "Reduces the available throttle to 60%", ecuManagerCloseThrottle, 60);
         ms04.setActions(a5);
         ms04.setConditions(c7, c8);
 
@@ -79,16 +78,20 @@ public class App {
         ms05.setActions(a6);
         ms05.setConditions(c9, c10);
 
-        Rule ms06 = new Rule(6, "False neutral", "Reduces the available RPMs when the bike is in Neutral and moving");
-        Condition c11 = new Condition("Neutral gear","The transmission has no gear engaged", RelationalOperator.EQUAL_THAN, 0, gearSelector);
-        Condition c12 = new Condition("Moving", "The motorcycle is moving", RelationalOperator.MORE_THAN, 10, speedometer);
-        Action a7 = new Action("Soft limiter", "RPMs are limited to 3500", ecuManagerLimitRPM, 3500);
-        ms06.setActions(a7);
-        ms06.setConditions(c11, c12);
 
-        account.setRules(ms01, ms02, ms03, ms04, ms05, ms06); //muchas condiciones a la vez peta
+        Profile beginnerProfile = new Profile(1,"Beginner");
 
-        List<Rule> rules = account.getRules();
+        beginnerProfile.setRules(ms01, ms02, ms03);
+
+        Profile intermediateProfile = new Profile(1,"Intermediate");
+
+        intermediateProfile.setRules(ms03, ms04);
+
+        Profile experiencedProfile = new Profile(1,"Experienced");
+
+        experiencedProfile.setRules(ms03);
+
+        List<Rule> rules = beginnerProfile.getRules();
         for (Rule rule: rules) {
             Thread rc = new RuleController(rule, mainDashboard);
             rc.start();

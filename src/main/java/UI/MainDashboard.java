@@ -19,7 +19,6 @@ public class MainDashboard extends JFrame{
     private JCheckBox MS03LeanInformationCheckBox;
     private JCheckBox MS04CornerExitControlCheckBox;
     private JCheckBox MS05ColdEngineProtectionCheckBox;
-    private JCheckBox MS06RevsSoftLimiterCheckBox;
     private JTextField displayTF;
     private JTextField ecuThrottle;
     private JTextField ecuRPMs;
