@@ -59,7 +59,7 @@ public class App {
 
         Rule ms03 = new Rule(3, "lean info", "displays information about the lean angle");
         Condition c5 = new Condition("Leaning", "The motorcycle is leaning", RelationalOperator.MORE_THAN, 0, gyroscopeX);
-        Condition c6 = new Condition("Moving", "The motorcycle is moving", RelationalOperator.MORE_THAN, 10, speedometer);
+        Condition c6 = new Condition("Moving", "The motorcycle is moving", RelationalOperator.MORE_THAN, 2, speedometer);
         Action a3 = new Action("Display lean angle", "Shows the angle the gyroscope X is reading", display, gyroscopeX.getValue());
         Action a4 = new Action("Display fall alert", "Shows the risk level of the current lean angle", fallAlert, 0);
         ms03.setActions(a3, a4);
@@ -86,7 +86,7 @@ public class App {
         ms06.setActions(a7);
         ms06.setConditions(c11, c12);
 
-        account.setRules(ms01, ms02, ms03, ms04, ms05, ms06);
+        account.setRules(ms01, ms02, ms03);
 
         List<Rule> rules = account.getRules();
         for (Rule rule: rules) {

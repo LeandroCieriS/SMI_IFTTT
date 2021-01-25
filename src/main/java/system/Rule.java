@@ -8,7 +8,7 @@ public class Rule {
     private final int ID;
     private final String name;
     private final String desc;
-
+    private boolean hasBeenActive = false;
     private List<Condition> conditions = new ArrayList();
     private List<Action> actions = new ArrayList();
 
@@ -28,14 +28,17 @@ public class Rule {
     }
 
     public void triggerActions(){
-        if(allConditionsAreMet())
+        if(allConditionsAreMet()) {
+            hasBeenActive = true;
             for (Action act : actions) {
                 act.execute();
             }
-        else
+        } else if (hasBeenActive) {
+            hasBeenActive=false;
             for (Action act : actions) {
                 act.getActuator().resetValue();
             }
+        }
     }
 
     public List<Condition> getConditions() {

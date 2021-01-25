@@ -17,12 +17,15 @@ public class RuleController extends Thread{
     @Override
     public void run() {
         while (true) {
-            if (rule.getID() == 3) {
-                trampaParaRegla3();
-            } else {
-                rule.triggerActions();
-                for (Action a: rule.getActions()) {
-                    mainDashboard.setValueFromActuator(a.getActuator().getClass().getSimpleName(), a.getActuator().getValue());
+            synchronized (this) {
+                if (rule.getID() == 3) {
+                    trampaParaRegla3();
+                } else {
+                    rule.triggerActions();
+
+                    for (Action a : rule.getActions()) {
+                        mainDashboard.setValueFromActuator(a.getActuator().getClass().getSimpleName(), a.getActuator().getValue());
+                    }
                 }
             }
         }
@@ -36,6 +39,7 @@ public class RuleController extends Thread{
 
         int leanAngle = leaning.getSensor().getValue();
         display.setValue(leanAngle);
+
         mainDashboard.setValueFromActuator(display.getActuator().getClass().getSimpleName(), display.getActuator().getValue());
 
         Action displayRisk = rule.getActions().get(1);
@@ -44,5 +48,6 @@ public class RuleController extends Thread{
         int risk = min(leanAngle/15, 3) ;
         displayRisk.setValue(risk);
         mainDashboard.setValueFromActuator(displayRisk.getActuator().getClass().getSimpleName(), displayRisk.getActuator().getValue());
+
     }
 }
