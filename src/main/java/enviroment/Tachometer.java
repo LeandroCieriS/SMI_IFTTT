@@ -6,6 +6,7 @@ public class Tachometer implements Sensor{
 
     @Override
     public int getValue() {
+        RPMs = (int) (Math.random()*10000);
         return RPMs;
     }
 

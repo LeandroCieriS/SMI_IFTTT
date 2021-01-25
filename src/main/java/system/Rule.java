@@ -60,4 +60,17 @@ public class Rule {
     public int getID() {
         return ID;
     }
+
+    public void addCondition(Condition condition){
+        conditions.add(condition);
+    }
+
+    public void addAction(Action action){
+        actions.add(action);
+    }
+
+    public void execute(){
+        if (allConditionsAreMet())
+            triggerActions();
+    }
 }
