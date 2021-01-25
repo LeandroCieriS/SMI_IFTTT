@@ -77,8 +77,7 @@ public class App {
         Action a6 = new Action("Soft limiter", "RPMs are limited to 3500", ecuManagerLimitRPM, 3500);
         ms05.setActions(a6);
         ms05.setConditions(c9, c10);
-
-
+        
         Profile beginnerProfile = new Profile(1,"Beginner");
 
         beginnerProfile.setRules(ms01, ms02, ms03);
